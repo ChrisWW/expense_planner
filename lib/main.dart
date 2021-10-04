@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,21 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final List<Transaction> transactions = [
+    Transaction(
+      id: 't1',
+      title: 'New Shoes',
+      amount: 69.00,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Shirt',
+      amount: 49.00,
+      date: DateTime.now(),
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -41,7 +57,7 @@ class MyHomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             child:
-                Card(color: Colors.blue, child: Text('CHART!'), elevation: 5),
+            Card(color: Colors.blue, child: Text('CHART!'), elevation: 5),
           ),
           Card(
             color: Colors.red,
