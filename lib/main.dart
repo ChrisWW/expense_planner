@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import './transaction.dart';
 
@@ -25,13 +27,13 @@ class MyHomePage extends StatelessWidget {
     Transaction(
       id: 't1',
       title: 'New Shoes',
-      amount: 69.00,
+      amount: 69.50,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
       title: 'Shirt',
-      amount: 49.00,
+      amount: 49.30,
       date: DateTime.now(),
     )
   ];
@@ -57,12 +59,27 @@ class MyHomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             child:
-            Card(color: Colors.blue, child: Text('CHART!'), elevation: 5),
+                Card(color: Colors.blue, child: Text('CHART!'), elevation: 5),
           ),
-          Card(
-            color: Colors.red,
-            child: Text('Second message'),
-          )
+          Column(
+            children: transactions.map((tx) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        tx.amount.toString(),
+                      ),
+                    ),
+                    Column(children: <Widget>[
+                      Text(tx.title),
+                      Text(tx.date.toString()),
+                    ]),
+                  ],
+                ),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
